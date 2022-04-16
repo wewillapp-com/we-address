@@ -13,6 +13,7 @@ type DistrictModel struct {
 	Amphur   AmphurModel
 }
 
+//force gorm to use plural table name
 func (DistrictModel) TableName() string {
 	return "districts"
 }

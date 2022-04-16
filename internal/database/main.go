@@ -31,7 +31,6 @@ func ConnectDatabase() {
 	}
 	DB = db
 }
-
 func Close() {
 	c, _ := DB.DB()
 	c.Close()

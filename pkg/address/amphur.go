@@ -13,6 +13,7 @@ type AmphurModel struct {
 	District   []DistrictModel `gorm:"foreignkey:AmphurID"`
 }
 
+//force gorm to use plural table name
 func (AmphurModel) TableName() string {
 	return "amphurs"
 }

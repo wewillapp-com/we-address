@@ -11,6 +11,7 @@ type ProvinceModel struct {
 	Amphur []AmphurModel `gorm:"foreignkey:ProvinceID"`
 }
 
+//force gorm to use plural table name
 func (ProvinceModel) TableName() string {
 	return "provinces"
 }
@@ -33,9 +34,10 @@ func GetProvinceById(id uint) (*ProvinceModel, error) {
 	return &province, nil
 }
 
+//Search provinces name by keyword
 func SearchProvince(q string) (*[]ProvinceModel, error) {
 	provinces := []ProvinceModel{}
-	if err := database.DB.Where("name LIKE ?", "%"+q+"%").Find(&provinces).Error; err != nil {
+	if err := database.DB.Where("name_th LIKE ?", "%"+q+"%").Find(&provinces).Error; err != nil {
 		return nil, err
 	}
 	return &provinces, nil

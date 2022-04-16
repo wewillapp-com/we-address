@@ -7,6 +7,7 @@ import (
 	"github.com/spf13/viper"
 )
 
+//Available config variables
 type Config struct {
 	DbHost     string
 	DbPort     string
@@ -18,6 +19,7 @@ type Config struct {
 	ConfigFile string
 }
 
+//Initialize config variables
 func InitConfig(c *Config) {
 	dir, _ := os.Getwd()
 	viper.AddConfigPath(dir)
@@ -32,10 +34,12 @@ func InitConfig(c *Config) {
 	analyzeConfig()
 }
 
+//Get config by key
 func GetConfig(key string) string {
 	return viper.GetString(key)
 }
 
+//analyze config variables and merged it
 func analyzeConfig() {
 	configs := viper.AllKeys()
 	for _, config := range configs {
