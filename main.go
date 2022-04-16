@@ -27,11 +27,15 @@ import (
 //go:embed static/raw_data/*.csv
 var rawData embed.FS
 
+//go:embed version.txt
+var version string
+
 func main() {
 	address.InitConfig(&address.Config{})
 	//check if user try to run command
 	if len(os.Args) > 1 {
 		cmd.RawData = rawData
+		cmd.CurrentVersion = version
 		cmd.Execute()
 	}
 }

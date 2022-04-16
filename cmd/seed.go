@@ -90,8 +90,7 @@ func seedProvince() error {
 	}
 	var provinces []address.ProvinceModel
 	for _, line := range csvLines[1:] {
-		_id, _ := strconv.ParseUint(line[0], 10, 64)
-		id := uint(_id)
+		id := strToUInt(line[0])
 		mo := address.ProvinceModel{
 			ID:     id,
 			NameTh: line[1],
@@ -169,6 +168,6 @@ func seedDistrict() error {
 }
 
 func strToUInt(str string) uint {
-	i, _ := strconv.ParseUint(str, 10, 64)
-	return uint(i)
+	parsed, _ := strconv.ParseUint(str, 10, 64)
+	return uint(parsed)
 }
